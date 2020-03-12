@@ -16,6 +16,17 @@ class App extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+  componentDidMount(){
+    var datos = localStorage.getItem('personas')
+    var listadatos = this.state.list
+    if(localStorage.length !== 0){
+      listadatos.push(JSON.parse(datos))
+      this.setState({
+        list:listadatos[0]
+      })
+    }
+
+  }
   handleChange(e){
     this.setState({
       [e.target.name] : e.target.value
@@ -27,6 +38,7 @@ class App extends Component {
     var index = this.state.index
     if(this.state.active === 0){
       lista.push({nombre:this.state.nombre,apellido:this.state.apellido})
+      localStorage.setItem('personas', JSON.stringify(lista))
       this.setState({
           nombre:'',
           apellido:'',
@@ -35,7 +47,7 @@ class App extends Component {
       var value = lista.indexOf(index)
       lista[value].nombre = this.state.nombre
       lista[value].apellido = this.state.apellido
-      
+      localStorage.setItem('personas', JSON.stringify(lista))
       this.setState({
         list:lista,
         nombre:'',
@@ -54,6 +66,7 @@ class App extends Component {
   
     let remove = this.state.list;
     remove.splice(value, 1);
+    localStorage.setItem('personas', JSON.stringify(remove))
     this.setState({
       list:remove
     })

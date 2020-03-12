@@ -34,17 +34,17 @@ class Tables extends Component{
               <TableBody>
               {
                          this.props.listado.map((lista,index) =>{
-                            return( 
-                                <TableRow key={index}>
-                                   <TableCell>{index}</TableCell>
-                                    <TableCell>{lista.nombre}</TableCell>
-                                    <TableCell>{lista.apellido}</TableCell>
-                                    <TableCell><Button variant="outlined" color="black" onClick = {()=> this.props.clickModificar(index)}>Modificar</Button></TableCell>
-                                    <TableCell><Button variant="outlined" color="black" onClick = {()=> this.props.clickDestroy(index)}>Eliminar</Button></TableCell>
-                                </TableRow>
-                          
-                             );
-                         })
+                          return( 
+                              <TableRow key={index}>
+                                 <TableCell>{index}</TableCell>
+                                  <TableCell>{lista.nombre}</TableCell>
+                                  <TableCell>{lista.apellido}</TableCell>
+                                  <TableCell><Button variant="outlined" color="black" onClick = {()=> this.props.clickModificar(index)}>Modificar</Button></TableCell>
+                                  <TableCell><Button variant="outlined" color="black" onClick = {()=> this.props.clickDestroy(index)}>Eliminar</Button></TableCell>
+                              </TableRow>
+                        
+                           );
+                       })
                     }
               </TableBody>
             </Table>
